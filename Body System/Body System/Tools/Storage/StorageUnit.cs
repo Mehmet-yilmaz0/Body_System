@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace Body_System.Tools.Storage
 {
-    internal class StorageUnit
+    public class StorageUnit
     {
         public int Data;
         public StorageUnit? Next;
