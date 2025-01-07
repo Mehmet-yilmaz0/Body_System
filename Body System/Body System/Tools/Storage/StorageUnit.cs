@@ -12,7 +12,8 @@ namespace Body_System.Tools.Storage
         public int Data;
         public StorageUnit? Next;
         public int empty;
-        public StorageUnit(int data)
+        public process? UnitP;
+        StorageUnit(int data)
         {
             Data = data;
             Next = null;
