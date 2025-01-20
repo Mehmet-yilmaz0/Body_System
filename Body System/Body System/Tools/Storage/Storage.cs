@@ -73,7 +73,7 @@ namespace Body_System.Tools.Storage
             }
         }
         //quick cut metodu içine gönderdiğiniz storage unitin depolamasını ikiye bölüp iki farklı storage unite ayırır.
-        void QuickCut(ref StorageUnit temp)
+        public void QuickCut(ref StorageUnit temp)
         {
             StorageUnit yeni = new StorageUnit();
             yeni.Data = temp.Data / 2;
@@ -81,6 +81,12 @@ namespace Body_System.Tools.Storage
             yeni.Next = temp.Next;
             temp.Next = yeni;
         }
-
+        public void QuickGlue(ref StorageUnit temp)
+        {
+            if (temp.Next != null && temp.Next.empty == 1 && temp.empty == 1) {
+                temp.Data = temp.Data * 2;
+                temp.Next = temp.Next.Next;
+            }
+        }
     }
 }
