@@ -81,12 +81,51 @@ namespace Body_System.Tools.Storage
             yeni.Next = temp.Next;
             temp.Next = yeni;
         }
+        //data miktarları aynıysa ve sonraki unit boşsa iki data bloğunu birleştirir.
         public void QuickGlue(ref StorageUnit temp)
         {
             if (temp.Next != null && temp.Next.empty == 1 && temp.empty == 1) {
                 temp.Data = temp.Data * 2;
                 temp.Next = temp.Next.Next;
             }
+        }
+        //sadece numaranın olup olmadığını söylüyor
+        public bool IsItUsed(int number)
+        {
+            StorageUnit temp = new StorageUnit();
+            temp= _head;
+            while (temp != null)
+            {
+                if (temp.Data == number)
+                {
+                    return true;
+                }
+                else
+                {
+                    temp= temp.Next;
+                    continue;
+                }
+            }
+            return false;
+        }
+        //bir processi bulup geri döndürüyor.
+        public StorageUnit Search(int number)
+        {
+            StorageUnit temp = new StorageUnit();
+            temp = _head;
+            while (temp != null)
+            {
+                if (temp.Data == number)
+                {
+                    return temp;
+                }
+                else
+                {
+                    temp = temp.Next;
+                    continue;
+                }
+            }
+            return null;
         }
     }
 }

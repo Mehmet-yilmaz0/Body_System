@@ -1,8 +1,13 @@
+using Body_System.Tools.Storage;
+using System.Windows.Forms;
+
 namespace Body_System
 {
-    public partial class Form1 : Form
+    public partial class FormStart : Form
     {
-        public Form1()
+        public static int FullSize;
+        public static Storage ram;
+        public FormStart()
         {
             InitializeComponent();
         }
@@ -14,13 +19,19 @@ namespace Body_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (IsPowerOfTwo(this.Text))
+            ErrorProvider errorprovider=new ErrorProvider();
+            if (IsPowerOfTwo(MemorySize.Text))
             {
-
+                FullSize = Convert.ToInt32(MemorySize.Text);
+                ram = new Storage(FullSize);
+                FormBodySystem form2 = new FormBodySystem();
+                form2.Show();
+                this.Hide();
             }
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Hide();
+            else
+            {
+                errorprovider.SetError(MemorySize, "lutfen gecerli deger gir!");
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

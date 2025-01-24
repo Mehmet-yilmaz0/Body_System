@@ -1,6 +1,6 @@
 ﻿namespace Body_System
 {
-    partial class Form1
+    partial class FormStart
     {
         /// <summary>
         ///  Required designer variable.
@@ -71,7 +71,7 @@
             label2.TabIndex = 3;
             label2.Text = "Memory Size";
             // 
-            // Form1
+            // FormStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -80,8 +80,8 @@
             Controls.Add(MemorySize);
             Controls.Add(label1);
             Controls.Add(button1);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "FormStart";
+            Text = "Welcome";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
