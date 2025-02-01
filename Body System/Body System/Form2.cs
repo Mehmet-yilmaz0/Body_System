@@ -16,6 +16,8 @@ namespace Body_System
         Storage ram = FormStart.ram;
         public FormBodySystem()
         {
+            this.Paint += new PaintEventHandler(DrawRam);
+            
             InitializeComponent();
         }
 
@@ -23,14 +25,14 @@ namespace Body_System
         {
             int a;
             ErrorProvider errorProvider = new ErrorProvider();
-            if (int.TryParse(ProcessNumberTextbox.Text, out _) && )
+            if (int.TryParse(ProcessNumberTextbox.Text, out _))
             {
                 int _Number = Convert.ToInt32(ProcessNumberTextbox);
-                if (0 > _Number)
+                if (0 > _Number)    
                 {
                     errorProvider.SetError(ProcessNumberTextbox, "Process numarası 0dan kucuk olamaz!");
                 }
-                if (ram.IsItUsed(_Number))
+                else if (ram.IsItUsed(_Number))
                 {
                     errorProvider.SetError(ProcessNumberTextbox, "Bu process zaten var!");
                 }
@@ -42,7 +44,11 @@ namespace Body_System
             }
             if(int.TryParse(ProcessSizeTextbox.Text, out _))
             {
-
+                int _Size = Convert.ToInt32(ProcessSizeTextbox.Text);
+                if (_Size > 256)
+                {
+                    errorProvider.SetError(ProcessNumberTextbox, "process boyutu 256dan buyuk olamaz!");
+                }
             }
             if(int.TryParse(ProcessTimeTextbox.Text, out _))
             {
@@ -73,6 +79,28 @@ namespace Body_System
         private void TimeIncrease_Click(object sender, EventArgs e)
         {
 
+        }
+        void DrawRam(object sender, PaintEventArgs e)
+        {
+            for (StorageUnit temp = ram._head; temp != null; temp = temp.Next)
+            {
+                if (temp.empty == 0)
+                {
+
+                }
+            }
+        }
+        private void RedBuild(int _size)
+        {
+
+        }
+        private void BlueBuild(int _size)
+        {
+
+        }
+        private void EndPoint()
+        {
+            Image ımage = Image.FromFile("C:\\Users\\asus\\Desktop\\for me\\Body_System\\Body System\\Body System\\Images\\");
         }
     }
 }

@@ -20,17 +20,29 @@ namespace Body_System
         private void button1_Click(object sender, EventArgs e)
         {
             ErrorProvider errorprovider=new ErrorProvider();
-            if (IsPowerOfTwo(MemorySize.Text))
+            if (int.TryParse(MemorySize.Text, out _))
             {
-                FullSize = Convert.ToInt32(MemorySize.Text);
-                ram = new Storage(FullSize);
-                FormBodySystem form2 = new FormBodySystem();
-                form2.Show();
-                this.Hide();
+                float size = Convert.ToInt32(MemorySize.Text);
+                if (IsPowerOfTwo(MemorySize.Text) && size <= 256)
+                {
+                    FullSize = Convert.ToInt32(MemorySize.Text);
+                    ram = new Storage(FullSize);
+                    FormBodySystem form2 = new FormBodySystem();
+                    form2.Show();
+                    this.Hide();
+                }
+                else if (size > 256)
+                {
+                    errorprovider.SetError(MemorySize, "lutfen 256 degerinden kucuk bir deger giriniz!");
+                }
+                else
+                {
+                    errorprovider.SetError(MemorySize, "lutfen 2'nin kuvveti giriniz!");
+                }
             }
             else
             {
-                errorprovider.SetError(MemorySize, "lutfen gecerli deger gir!");
+                errorprovider.SetError(MemorySize, "lutfen sayý degeri giriniz");
             }
         }
 
@@ -40,8 +52,7 @@ namespace Body_System
         }
         private bool IsPowerOfTwo(string s)
         {
-            if(int.TryParse(s, out _))
-            {
+            
                 //2nin kuvveti olup olmadýðýný kontrol ediyorum
                 float i=Convert.ToInt32(s);
                 while(i>1)
@@ -57,11 +68,6 @@ namespace Body_System
                     return true;
                 }
                 return false;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

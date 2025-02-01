@@ -11,7 +11,7 @@ namespace Body_System.Tools.Storage
     public class Storage
     {
         [Required]
-        private StorageUnit _head;
+        public StorageUnit _head;
         public Storage(int boyut)
         {
             _head = new StorageUnit(boyut);

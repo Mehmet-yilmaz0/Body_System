@@ -11,13 +11,13 @@ namespace Body_System.Tools.Storage
     {
         public int Data;
         public StorageUnit? Next;
-        public int empty;
+        public bool empty;
         process? UnitP;
         public StorageUnit(int data)
         {
             this.Data = data;
             this.Next = null;
-            this.empty = 1;
+            this.empty = true;
             this.UnitP = null;
         }
         public StorageUnit()
@@ -27,12 +27,12 @@ namespace Body_System.Tools.Storage
         }
         void Pull(process _process)
         {
-            if (this.empty == 1)
+            if (this.empty == true)
             {
                 if (_process.Size == this.Data)
                 {
                     this.UnitP = _process;
-                    empty = 0;
+                    empty = false;
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace Body_System.Tools.Storage
                 if (this.UnitP.Time == 0)
                 {
                     this.UnitP = null;
-                    this.empty = 1;
+                    this.empty = true;
                 }
                 else
                 {
